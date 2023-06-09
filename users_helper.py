@@ -159,6 +159,9 @@ def is_valid_range(vocation_date,_LOGIN_OBJECT):
     today_diff = dates_helper.get_day_difference(today,vocation_date)
     year_diff = dates_helper.get_day_difference(today,vocation_date)
     if dates_helper.is_friday(vocation_date):
+      # added new condition
+      if how_many_employes_on_this_vocation_date(vocation_date) > MAX_EMPLOYES_PER_QUOTE:
+        return False
       if visa_diff >= 14:
         if contract_diff >= 90:
           if today_diff > 0:
